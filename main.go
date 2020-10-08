@@ -44,7 +44,8 @@ func createFreshDB(refreshDB bool) *gorm.DB {
 	// busy_timeout 5 secs
 	db, err := gorm.Open(sqlite.Open(dbPath+"?busy_timeout=5000"), &gorm.Config{})
 
-	db.Exec("PRAGMA journal_mode=WAL")
+	// uncomment to activate WAL mode
+	// db.Exec("PRAGMA journal_mode=WAL")
 
 	if err != nil {
 		panic("Unable to open database connection: " + err.Error())
